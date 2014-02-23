@@ -20,14 +20,13 @@ class MainHandler(webapp2.RequestHandler):
     def get(self):
         self.response.write('Hello world!')
 
-class Main2Handler(webapp2.RequestHandler):
+class QueryStringHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write('Python eh bom')
-
-
+        nome = self.request.get('nome')
+        self.response.write("nome %s" %nome)
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
-    ("/oi", Main2Handler)
+    ("/string", QueryStringHandler)
 
 ], debug=True)
