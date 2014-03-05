@@ -20,6 +20,9 @@ class MainHandler(webapp2.RequestHandler):
     def get(self):
         self.response.write('Hello world!')
 
+"""
+Projeto 2
+
 class QueryStringHandler(webapp2.RequestHandler):
     def get(self):
         nome = self.request.get('nome')
@@ -30,3 +33,6 @@ app = webapp2.WSGIApplication([
     ("/string", QueryStringHandler)
 
 ], debug=True)
+"""
+
+
