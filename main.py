@@ -15,11 +15,41 @@
 # limitations under the License.
 #
 import webapp2
+import jinja2
+import os
+
+env = jinja2.Environment(
+    loader=jinja2.FileSystemLoader(os.path.dirname("templates"))
+)
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write('Hello world!')
+        main_template = env.get_template("templates/home.html")
+        self.response.write(main_template.render())
+
+class EpisodioHandler(webapp2.RequestHandler):
+    def get(self):
+        main_template = env.get_template("templates/episodio.html")
+        self.response.write(main_template.render())
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainHandler),
+    ('/episodio', EpisodioHandler)
+], debug=False)
+
+"""
+Projeto 2
+
+class QueryStringHandler(webapp2.RequestHandler):
+    def get(self):
+        nome = self.request.get('nome')
+        self.response.write("nome %s" %nome)
+
+app = webapp2.WSGIApplication([
+    ('/', MainHandler),
+    ("/string", QueryStringHandler)
+
 ], debug=True)
+"""
+
+
