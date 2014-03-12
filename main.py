@@ -27,14 +27,9 @@ class MainHandler(webapp2.RequestHandler):
         main_template = env.get_template("templates/home.html")
         self.response.write(main_template.render())
 
-class EpisodioHandler(webapp2.RequestHandler):
-    def get(self):
-        main_template = env.get_template("templates/episodio.html")
-        self.response.write(main_template.render())
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler),
-    ('/episodio', EpisodioHandler)
+    ('/', MainHandler)
 ], debug=False)
 
 """
