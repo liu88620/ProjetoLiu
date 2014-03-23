@@ -1,0 +1,30 @@
+{% block head %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>World Anime</title>
+        <link rel="stylesheet " type=" text/css" href="../static/css/bootstrap.css" >
+        <link rel="stylesheet " type=" text/css" href="../static/css/styles.css" >
+    </head>
+    <body>
+
+        <nav class="navbar navbar-inverse navbar-fixed-top" style="margin-bottom: 100px !important; " >
+          <div class="container">
+            <div class="navbar-header">
+                <h3 style="position: absolute;margin-top: 5px">
+                    <a style="color:white;text-decoration: none" href="/">World Anime</a>
+                </h3>
+            </div>
+              {% if nickname %}
+              <h5 style="margin-top: 20px;color: white;float:right">Bem vindo  {{nickname}}
+                <a href="{{logout_url}}">  sair</a>
+              </h5>
+              {% else %}
+                <h5 style="margin-top: 20px;color: white;float:right"> <a href="{{login_url}}">entrar</a> </h5>
+              {% endif %}
+        </div>
+        </nav>
+{% endblock %}
+{% block content %}
+ {% endblock %}
