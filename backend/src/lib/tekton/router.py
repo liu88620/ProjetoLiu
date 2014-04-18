@@ -66,8 +66,8 @@ def _import_helper(package, module_name, fcn_name, params, convention_params, **
                 all_params = _check_params(params, convention_params, inspect.getargspec(fcn), **kwargs)
                 if not (all_params is None):
                     return fcn, all_params
-    except ImportError:
-        pass
+    except ImportError, e:
+        print e
 
 
 def _build_pack_and_slices(package, slices):

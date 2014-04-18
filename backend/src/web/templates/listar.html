@@ -1,0 +1,32 @@
+    {% extends "templates/base.html" %}
+        {% block head %}
+            {{ super() }}
+        {% endblock %}
+        {% block content %}
+    <h2 class="page-header" style="margin-top: 70px; text-align: center">Tabela de usuários</h2>
+    <a href="/home"  class="btn btn-primary" style="position: absolute;top:65px;margin-left:15px;">Voltar</a>
+    <table class="table" style="margin-top: 50px;">
+            <thead>
+            <tr>
+                <th> # </th>
+                <th> nome </th>
+                <th> id </th>
+                <th> email </th>
+            </tr>
+            </thead>
+
+                <tbody>
+
+                    {% for item in lista %}
+                        <tr>
+                            <td> {{item.indice +1}} </td>
+                            <td> {{item.nome}} </td>
+                            <td> {{item.google_id}} </td>
+                            <td> {{item.email}} </td>
+                        </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endblock %}
+    </body>
+</html>
