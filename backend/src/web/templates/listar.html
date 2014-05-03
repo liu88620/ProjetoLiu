@@ -1,0 +1,49 @@
+    {% extends "templates/base.html" %}
+        {% block head %}
+            {{ super() }}
+            <script type="text/javascript" src="../static/js/services/services.js"></script>
+            <script type="text/javascript" src="../static/js/controllers/tableController.js"></script>
+        {% endblock %}
+        {% block content %}
+    <h2 class="page-header" style="margin-top: 70px; text-align: center">Tabela de usuários</h2>
+    <a href="/home"  class="btn btn-primary" style="position: absolute;top:65px;margin-left:15px;">Voltar</a>
+    <div  ng-controller="tableController">
+        <form class="form-inline" style="margin-left: 400px">
+            <div class="form-group">
+                <input class="input-sm" placeholder="nome" type="text" name="name" ng-model="nome">
+            </div>
+            <div class="form-group">
+                <input class="input-sm" placeholder="email" type="text" name="email" ng-model="email">
+            </div>
+            <div class="form-group">
+                <input class="input-sm" placeholder="id(opcional)" type="text" name="google_id" ng-model="google_id">
+            </div>
+            <button class="btn btn-success" ng-click="addUser()">Adicionar Usuario</button>
+        </form>
+        <input class="input-sm" id="search" type="text" placeholder="pesquisar..." ng-model="search">
+
+        <div class="loader" ng-show="isLoading">Carregando...</div>
+        <table ng-show="!isLoading" class="table" style="margin-top: 50px;">
+                <thead>
+                <tr>
+                    <th> # </th>
+                    <th> nome </th>
+                    <th> id </th>
+                    <th> email </th>
+                </tr>
+                </thead>
+
+                    <tbody  class="tablebody">
+                            <tr  ng-repeat="user in users | orderBy: user.name | filter: search">
+                                <td ng-bind="$index + 1"></td>
+                                <td ng-bind="user.nome"></td>
+                                <td ng-bind="user.google_id"></td>
+                                <td ng-bind="user.email"></td>
+                                <td ng-click="removeUser(user, $index)"><i class="glyphicon glyphicon-remove"></i></td>
+                            </tr>
+                    </tbody>
+        </table>
+    </div>
+        {% endblock %}
+    </body>
+</html>
