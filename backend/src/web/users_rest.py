@@ -19,3 +19,6 @@ def remove_user(email):
 def add_user(name, email, google_id):
     user = users_service.add_user(name, email, google_id)
     user.put()
+
+def edit_user(name, email, google_id):
+    users_service.edit_user(name, email, google_id)

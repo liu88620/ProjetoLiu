@@ -16,3 +16,10 @@ def add_user(name, email, google_id=None):
     user = Usuario(nome=name, email=email)
     return user
 
+def edit_user(name, email, google_id):
+    user = Usuario.query(Usuario.google_id == google_id).get()
+    if user:
+        user.nome = name
+        user.email = email
+        user.put()
+

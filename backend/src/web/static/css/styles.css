@@ -20,6 +20,15 @@ img{
 
 .glyphicon.glyphicon-remove{
     color: red;
+    cursor: pointer;
+}
+.glyphicon.glyphicon-edit{
+    color: blue;
+    cursor: pointer;
+}
+.glyphicon.glyphicon-plus{
+    color: green;
+    cursor: pointer;
 }
 
 .tablebody :hover{

@@ -27,19 +27,27 @@
                 <thead>
                 <tr>
                     <th> # </th>
-                    <th> nome </th>
                     <th> id </th>
+                    <th> nome </th>
                     <th> email </th>
                 </tr>
                 </thead>
 
                     <tbody  class="tablebody">
-                            <tr  ng-repeat="user in users | orderBy: user.name | filter: search">
-                                <td ng-bind="$index + 1"></td>
-                                <td ng-bind="user.nome"></td>
-                                <td ng-bind="user.google_id"></td>
-                                <td ng-bind="user.email"></td>
+                            <tr  ng-repeat="user in users | orderBy: user.google_id | filter: search">
+                                    <td> { $index + 1} </td>
+                                    <td >{user.google_id}</td>
+                                    <td ng-hide="user.editing">{user.nome}</td>
+                                    <td ng-hide="user.editing">{user.email}</td>
+                                    <td ng-show="user.editing">
+                                        <input type="text" ng-model="novo_nome" placeholder="nome">
+                                    </td>
+                                    <td ng-show="user.editing">
+                                        <input type="text" ng-model="novo_email" placeholder="email">
+                                    </td>
                                 <td ng-click="removeUser(user, $index)"><i class="glyphicon glyphicon-remove"></i></td>
+                                <td ng-show="!user.editing" ng-click="editUser(user, $index)"><i class="glyphicon glyphicon-edit"></i></td>
+                                <td ng-show="user.editing" ng-click="saveEditedUser(novo_nome, novo_email, user)"><i class="glyphicon glyphicon-plus"></i></td>
                             </tr>
                     </tbody>
         </table>

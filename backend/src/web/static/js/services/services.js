@@ -1,5 +1,10 @@
 app = angular.module("world-anime", []);
 
+app.config(function($interpolateProvider){
+    $interpolateProvider.startSymbol("{");
+    $interpolateProvider.endSymbol("}")
+});
+
 app.factory('users_service', function($http){
     return {
       getUsers: function(){
@@ -12,6 +17,10 @@ app.factory('users_service', function($http){
       removeUser: function(email){
           return $http.jsonp('/users_rest/remove_user/'
               + '?email=' + email)
+      },
+      edituser: function(name, email, google_id){
+        return $http.jsonp('/users_rest/edit_user/' +
+            '?name=' + name  + '&email=' + email + '&google_id=' + google_id)
       }
     };
 
